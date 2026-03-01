@@ -1,0 +1,2129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO -->
+  <title>Vahos Group | Canadian Business Platform</title>
+  <meta name="description" content="Vahos Group is a structured Canadian business platform building integrated ecosystems across media, services, and venture integration." />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Vahos Group | Canadian Business Platform" />
+  <meta property="og:description" content="Building structured business ecosystems across Canada." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://vahosgroup.com" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ============================
+       RESET & BASE
+    ============================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:          #0B0F1A;
+      --surface:     #121A2B;
+      --surface-alt: #0F1625;
+      --border:      rgba(59,130,246,0.12);
+      --border-light:rgba(255,255,255,0.06);
+      --primary:     #3B82F6;
+      --primary-hover:#2563EB;
+      --accent:      #14B8A6;
+      --text:        #E5E7EB;
+      --text-secondary:#94A3B8;
+      --text-muted:  #4B5E7A;
+      --font-main:   'DM Sans', system-ui, sans-serif;
+      --font-mono:   'DM Mono', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-main);
+      font-size: 16px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; font-family: var(--font-main); }
+    img { max-width: 100%; }
+
+    /* ============================
+       UTILITIES
+    ============================ */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    .section {
+      padding: 100px 0;
+    }
+
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .section-title {
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 300;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .section-sub {
+      font-size: 16px;
+      color: var(--text-secondary);
+      max-width: 560px;
+      line-height: 1.7;
+    }
+
+    .divider {
+      width: 40px;
+      height: 1px;
+      background: var(--primary);
+      margin: 24px 0;
+      opacity: 0.6;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      border: 1px solid transparent;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+    .btn-primary:hover { background: var(--primary-hover); border-color: var(--primary-hover); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border-color: var(--border-light);
+    }
+    .btn-outline:hover { border-color: var(--primary); color: var(--primary); }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text-secondary);
+      border-color: transparent;
+      padding: 10px 16px;
+      font-size: 13px;
+    }
+    .btn-ghost:hover { color: var(--text); }
+
+    /* Fade-in animation */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Subtle grid background */
+    .grid-bg {
+      background-image:
+        linear-gradient(var(--border-light) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border-light) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+
+    /* ============================
+       SECTION: NAVBAR
+    ============================ */
+    #navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(11,15,26,0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-light);
+      height: 64px;
+      display: flex;
+      align-items: center;
+      transition: background 0.3s ease;
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .nav-logo {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+
+    .nav-logo-name {
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text);
+    }
+
+    .nav-logo-sub {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--text-secondary);
+      padding: 8px 12px;
+      border-radius: 4px;
+      transition: color 0.2s ease;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    /* Language toggle */
+    .lang-toggle {
+      display: flex;
+      align-items: center;
+      background: var(--surface);
+      border: 1px solid var(--border-light);
+      border-radius: 4px;
+      overflow: hidden;
+      font-size: 12px;
+      font-family: var(--font-mono);
+    }
+
+    .lang-btn {
+      padding: 6px 12px;
+      border: none;
+      background: transparent;
+      color: var(--text-secondary);
+      transition: all 0.15s ease;
+      letter-spacing: 0.06em;
+    }
+    .lang-btn.active {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      padding: 8px;
+    }
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--text-secondary);
+      transition: all 0.2s ease;
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 64px; left: 0; right: 0;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border-light);
+      z-index: 999;
+      padding: 20px 32px;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-size: 14px;
+      color: var(--text-secondary);
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .mobile-menu a:last-child { border-bottom: none; }
+
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .nav-partner { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    /* ============================
+       SECTION: HERO
+    ============================ */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding-top: 64px;
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(59,130,246,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(59,130,246,0.04) 1px, transparent 1px);
+      background-size: 64px 64px;
+    }
+
+    .hero-glow {
+      position: absolute;
+      top: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 400px;
+      background: radial-gradient(ellipse, rgba(59,130,246,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 32px;
+      height: 1px;
+      background: var(--accent);
+      opacity: 0.6;
+    }
+
+    .hero-title {
+      font-size: clamp(48px, 7vw, 80px);
+      font-weight: 300;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .hero-subtitle {
+      font-family: var(--font-mono);
+      font-size: clamp(12px, 1.5vw, 14px);
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 40px;
+    }
+
+    .hero-desc {
+      font-size: 17px;
+      color: var(--text-secondary);
+      max-width: 520px;
+      line-height: 1.75;
+      margin-bottom: 48px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .hero-bottom {
+      position: absolute;
+      bottom: 40px;
+      left: 0; right: 0;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 48px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border-light);
+    }
+
+    .hero-stat-val {
+      font-size: 28px;
+      font-weight: 300;
+      color: var(--text);
+      letter-spacing: -0.02em;
+    }
+
+    .hero-stat-label {
+      font-size: 12px;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+      margin-top: 2px;
+    }
+
+    /* ============================
+       SECTION: WHAT WE BUILD
+    ============================ */
+    #what-we-build {
+      background: var(--surface-alt);
+      border-top: 1px solid var(--border-light);
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border-light);
+      margin-top: 64px;
+      border: 1px solid var(--border-light);
+    }
+
+    .pillar {
+      background: var(--bg);
+      padding: 48px 40px;
+      position: relative;
+      transition: background 0.2s ease;
+    }
+    .pillar:hover { background: var(--surface); }
+
+    .pillar-number {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+      margin-bottom: 24px;
+    }
+
+    .pillar-icon {
+      width: 36px;
+      height: 36px;
+      margin-bottom: 20px;
+      color: var(--primary);
+    }
+
+    .pillar-title {
+      font-size: 18px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+
+    .pillar-desc {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    .pillar-accent {
+      position: absolute;
+      top: 0; left: 0;
+      width: 2px;
+      height: 0;
+      background: var(--primary);
+      transition: height 0.3s ease;
+    }
+    .pillar:hover .pillar-accent { height: 100%; }
+
+    @media (max-width: 768px) {
+      .pillars-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ============================
+       SECTION: ECOSYSTEM
+    ============================ */
+    #ecosystem {
+      background: var(--bg);
+    }
+
+    .ecosystem-diagram {
+      margin-top: 64px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+    }
+
+    .eco-center {
+      background: var(--surface);
+      border: 1px solid var(--primary);
+      border-radius: 6px;
+      padding: 24px 48px;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .eco-center-name {
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text);
+    }
+
+    .eco-center-sub {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .eco-line-v {
+      width: 1px;
+      height: 40px;
+      background: var(--border);
+    }
+
+    .eco-row {
+      display: flex;
+      gap: 24px;
+      position: relative;
+    }
+
+    .eco-row::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .eco-node {
+      flex: 1;
+      background: var(--surface);
+      border: 1px solid var(--border-light);
+      border-radius: 4px;
+      padding: 24px 24px;
+      text-align: center;
+      position: relative;
+      transition: border-color 0.2s ease;
+    }
+    .eco-node:hover { border-color: var(--primary); }
+
+    .eco-node::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 1px;
+      height: 40px;
+      background: var(--border);
+      top: -41px;
+    }
+
+    .eco-node-title {
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .eco-node-sub {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .eco-badge {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      padding: 2px 8px;
+      border-radius: 2px;
+      margin-top: 8px;
+    }
+
+    .eco-badge-active { background: rgba(59,130,246,0.1); color: var(--primary); }
+    .eco-badge-growth { background: rgba(20,184,166,0.1); color: var(--accent); }
+
+    @media (max-width: 640px) {
+      .eco-row { flex-direction: column; }
+      .eco-node::before { display: none; }
+    }
+
+    /* ============================
+       SECTION: OUR COMPANIES
+    ============================ */
+    #companies {
+      background: var(--surface-alt);
+      border-top: 1px solid var(--border-light);
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .companies-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: var(--border-light);
+      margin-top: 64px;
+      border: 1px solid var(--border-light);
+    }
+
+    .company-card {
+      background: var(--bg);
+      padding: 48px 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: background 0.2s ease;
+    }
+    .company-card:hover { background: var(--surface); }
+
+    .company-tag {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .company-name {
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+
+    .company-desc {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      flex: 1;
+    }
+
+    .company-coming-soon {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border: 1px solid var(--border-light);
+      border-radius: 2px;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 640px) {
+      .companies-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ============================
+       SECTION: GROWTH STRATEGY
+    ============================ */
+    #strategy {
+      background: var(--bg);
+    }
+
+    .timeline {
+      margin-top: 64px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      position: relative;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 20px;
+      top: 0; bottom: 0;
+      width: 1px;
+      background: var(--border);
+    }
+
+    .timeline-item {
+      display: flex;
+      gap: 40px;
+      padding: 32px 0 32px 60px;
+      position: relative;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .timeline-item:last-child { border-bottom: none; }
+
+    .timeline-dot {
+      position: absolute;
+      left: 12px;
+      top: 40px;
+      width: 17px;
+      height: 17px;
+      border-radius: 50%;
+      border: 1px solid var(--primary);
+      background: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .timeline-dot::after {
+      content: '';
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--primary);
+    }
+
+    .timeline-phase {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+
+    .timeline-title {
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .timeline-desc {
+      font-size: 14px;
+      color: var(--text-secondary);
+      max-width: 600px;
+      line-height: 1.7;
+    }
+
+    /* ============================
+       SECTION: PARTNER WITH US
+    ============================ */
+    #partner {
+      background: var(--surface-alt);
+      border-top: 1px solid var(--border-light);
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .partner-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      margin-top: 64px;
+      align-items: start;
+    }
+
+    .partner-features {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border: 1px solid var(--border-light);
+    }
+
+    .partner-feature {
+      padding: 24px 28px;
+      border-bottom: 1px solid var(--border-light);
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .partner-feature:last-child { border-bottom: none; }
+
+    .partner-feature-num {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-muted);
+      min-width: 24px;
+      margin-top: 2px;
+    }
+
+    .partner-feature-title {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .partner-feature-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+      .partner-grid { grid-template-columns: 1fr; gap: 40px; }
+    }
+
+    /* ============================
+       SECTION: INVESTOR RELATIONS
+    ============================ */
+    #investors {
+      background: var(--bg);
+    }
+
+    .investor-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: var(--border-light);
+      margin-top: 64px;
+      border: 1px solid var(--border-light);
+      margin-bottom: 48px;
+    }
+
+    .investor-block {
+      background: var(--bg);
+      padding: 40px;
+      transition: background 0.2s ease;
+    }
+    .investor-block:hover { background: var(--surface); }
+
+    .investor-block-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 12px;
+    }
+
+    .investor-block-title {
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+
+    .investor-block-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    @media (max-width: 640px) {
+      .investor-grid { grid-template-columns: 1fr; }
+    }
+
+    .investor-form {
+      background: var(--surface);
+      border: 1px solid var(--border-light);
+      padding: 40px;
+      max-width: 560px;
+      margin-top: 48px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+
+    .form-group label {
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      font-family: var(--font-mono);
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      background: var(--bg);
+      border: 1px solid var(--border-light);
+      border-radius: 4px;
+      padding: 11px 14px;
+      color: var(--text);
+      font-size: 14px;
+      font-family: var(--font-main);
+      transition: border-color 0.2s ease;
+      outline: none;
+      width: 100%;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--primary);
+    }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+
+    @media (max-width: 640px) {
+      .form-row { grid-template-columns: 1fr; }
+    }
+
+    /* ============================
+       SECTION: ABOUT
+    ============================ */
+    #about {
+      background: var(--surface-alt);
+      border-top: 1px solid var(--border-light);
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 80px;
+      margin-top: 64px;
+      align-items: start;
+    }
+
+    .about-body {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+    .about-body p { margin-bottom: 20px; }
+
+    .about-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border: 1px solid var(--border-light);
+    }
+
+    .about-meta-row {
+      display: flex;
+      flex-direction: column;
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--border-light);
+    }
+    .about-meta-row:last-child { border-bottom: none; }
+
+    .about-meta-key {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .about-meta-val {
+      font-size: 15px;
+      color: var(--text);
+    }
+
+    @media (max-width: 768px) {
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    }
+
+    /* ============================
+       SECTION: CONTACT
+    ============================ */
+    #contact {
+      background: var(--bg);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 80px;
+      margin-top: 64px;
+      align-items: start;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .contact-item-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .contact-item-val {
+      font-size: 15px;
+      color: var(--text);
+    }
+
+    .contact-form {
+      background: var(--surface);
+      border: 1px solid var(--border-light);
+      padding: 40px;
+    }
+
+    @media (max-width: 768px) {
+      .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+    }
+
+    /* ============================
+       SECTION: FOOTER
+    ============================ */
+    #footer {
+      background: var(--surface-alt);
+      border-top: 1px solid var(--border-light);
+      padding: 60px 0 32px;
+    }
+
+    .footer-top {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .footer-brand-name {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .footer-brand-sub {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .footer-brand-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    .footer-col-title {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .footer-col-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-col-links a {
+      font-size: 13px;
+      color: var(--text-secondary);
+      transition: color 0.15s ease;
+    }
+    .footer-col-links a:hover { color: var(--text); }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 28px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 768px) {
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+    }
+    @media (max-width: 480px) {
+      .footer-top { grid-template-columns: 1fr; }
+    }
+
+    /* ============================
+       SUCCESS MESSAGE
+    ============================ */
+    .form-success {
+      display: none;
+      background: rgba(20,184,166,0.08);
+      border: 1px solid rgba(20,184,166,0.2);
+      border-radius: 4px;
+      padding: 16px 20px;
+      font-size: 14px;
+      color: var(--accent);
+      margin-top: 16px;
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ============================
+     SECTION: NAVBAR
+============================ -->
+<nav id="navbar" role="navigation" aria-label="Main navigation">
+  <div class="container">
+    <div class="nav-inner">
+
+      <a href="#hero" class="nav-logo" aria-label="Vahos Group Home">
+        <span class="nav-logo-name">Vahos Group</span>
+        <span class="nav-logo-sub" data-i18n="nav_sub">Canadian Business Platform</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#what-we-build" data-i18n="nav_ecosystem">Ecosystem</a></li>
+        <li><a href="#companies" data-i18n="nav_companies">Companies</a></li>
+        <li><a href="#strategy" data-i18n="nav_strategy">Strategy</a></li>
+        <li><a href="#partner" data-i18n="nav_partner">Partner</a></li>
+        <li><a href="#investors" data-i18n="nav_investors">Investors</a></li>
+        <li><a href="#about" data-i18n="nav_about">About</a></li>
+        <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
+      </ul>
+
+      <div class="nav-right">
+        <div class="lang-toggle" role="group" aria-label="Language selector">
+          <button class="lang-btn active" onclick="setLang('en')" aria-label="English" id="btn-en">EN</button>
+          <button class="lang-btn" onclick="setLang('es')" aria-label="Español" id="btn-es">ES</button>
+        </div>
+        <a href="#partner" class="btn btn-outline nav-partner" data-i18n="nav_partner_btn" style="font-size:13px;padding:9px 18px;">Partner With Us</a>
+        <button class="hamburger" onclick="toggleMobile()" aria-label="Menu" aria-expanded="false" id="hamburger">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+  <a href="#what-we-build" onclick="closeMobile()" data-i18n="nav_ecosystem">Ecosystem</a>
+  <a href="#companies" onclick="closeMobile()" data-i18n="nav_companies">Companies</a>
+  <a href="#strategy" onclick="closeMobile()" data-i18n="nav_strategy">Strategy</a>
+  <a href="#partner" onclick="closeMobile()" data-i18n="nav_partner">Partner</a>
+  <a href="#investors" onclick="closeMobile()" data-i18n="nav_investors">Investors</a>
+  <a href="#about" onclick="closeMobile()" data-i18n="nav_about">About</a>
+  <a href="#contact" onclick="closeMobile()" data-i18n="nav_contact">Contact</a>
+</div>
+
+<!-- ============================
+     SECTION: HERO
+============================ -->
+<section id="hero" aria-label="Hero">
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="hero-glow" aria-hidden="true"></div>
+
+  <div class="container">
+    <div class="hero-content fade-in">
+
+      <div class="hero-eyebrow" data-i18n="hero_eyebrow">Alberta, Canada · Est. 2011</div>
+
+      <h1 class="hero-title">Vahos Group</h1>
+      <p class="hero-subtitle">Canadian Business Platform</p>
+
+      <p class="hero-desc" data-i18n="hero_desc">Building structured business ecosystems across Canada.</p>
+
+      <div class="hero-actions">
+        <a href="#what-we-build" class="btn btn-primary" data-i18n="hero_btn1">Explore the Ecosystem</a>
+        <a href="#investors" class="btn btn-outline" data-i18n="hero_btn2">Investor Relations</a>
+      </div>
+    </div>
+
+    <div class="hero-bottom">
+      <div class="container">
+        <div class="hero-stats fade-in">
+          <div>
+            <div class="hero-stat-val">3+</div>
+            <div class="hero-stat-label" data-i18n="stat1">Active Companies</div>
+          </div>
+          <div>
+            <div class="hero-stat-val">2011</div>
+            <div class="hero-stat-label" data-i18n="stat2">Founded</div>
+          </div>
+          <div>
+            <div class="hero-stat-val">CA</div>
+            <div class="hero-stat-label" data-i18n="stat3">National Scope</div>
+          </div>
+          <div>
+            <div class="hero-stat-val">4</div>
+            <div class="hero-stat-label" data-i18n="stat4">Growth Phases</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================
+     SECTION: WHAT WE BUILD
+============================ -->
+<section id="what-we-build" class="section" aria-labelledby="build-title">
+  <div class="container">
+    <div class="fade-in">
+      <span class="section-label" data-i18n="build_label">What We Build</span>
+      <h2 class="section-title" id="build-title" data-i18n="build_title">Three Integrated Divisions</h2>
+      <div class="divider"></div>
+      <p class="section-sub" data-i18n="build_sub">Each division operates independently while contributing to the broader Vahos Group platform.</p>
+    </div>
+
+    <div class="pillars-grid fade-in">
+      <div class="pillar">
+        <div class="pillar-accent"></div>
+        <div class="pillar-number">01</div>
+        <svg class="pillar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>
+        <div class="pillar-title" data-i18n="pillar1_title">Media</div>
+        <p class="pillar-desc" data-i18n="pillar1_desc">Digital broadcasting, communication networks and content infrastructure for multicultural communities across Canada.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-accent"></div>
+        <div class="pillar-number">02</div>
+        <svg class="pillar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        <div class="pillar-title" data-i18n="pillar2_title">Services</div>
+        <p class="pillar-desc" data-i18n="pillar2_desc">Operational platforms designed for scalable service delivery, connecting clients with vetted independent contractors.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-accent"></div>
+        <div class="pillar-number">03</div>
+        <svg class="pillar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        <div class="pillar-title" data-i18n="pillar3_title">Venture Integration</div>
+        <p class="pillar-desc" data-i18n="pillar3_desc">Structured integration model for Canadian businesses aligned with our ecosystem — brand, media, and operations in one framework.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================
+     SECTION: ECOSYSTEM STRUCTURE
+============================ -->
+<section id="ecosystem" class="section" style="background:var(--surface-alt);border-top:1px solid var(--border-light);border-bottom:1px solid var(--border-light);" aria-labelledby="eco-title">
+  <div class="container">
+    <div class="fade-in">
+      <span class="section-label" data-i18n="eco_label">Ecosystem Structure</span>
+      <h2 class="section-title" id="eco-title" data-i18n="eco_title">How the Platform Connects</h2>
+      <div class="divider"></div>
+      <p class="section-sub" data-i18n="eco_sub">An integrated holding structure where each unit amplifies the others.</p>
+    </div>
+
+    <div class="ecosystem-diagram fade-in">
+      <div class="eco-center">
+        <div class="eco-center-name">Vahos Group</div>
+        <div class="eco-center-sub">Canadian Business Platform</div>
+      </div>
+      <div class="eco-line-v"></div>
+      <div class="eco-row">
+        <div class="eco-node">
+          <div class="eco-node-title" data-i18n="eco_node1">Media Division</div>
+          <div class="eco-node-sub">eRadio Global</div>
+          <div class="eco-badge eco-badge-active" data-i18n="eco_active">Active</div>
+        </div>
+        <div class="eco-node">
+          <div class="eco-node-title" data-i18n="eco_node2">Services Division</div>
+          <div class="eco-node-sub">Prime Services Canada</div>
+          <div class="eco-badge eco-badge-active" data-i18n="eco_active">Active</div>
+        </div>
+        <div class="eco-node">
+          <div class="eco-node-title" data-i18n="eco_node3">Venture Integration</div>
+          <div class="eco-node-sub">Vahos Immigration · eRadio Coffee</div>
+          <div class="eco-badge eco-badge-growth" data-i18n="eco_growth">Scaling</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================
+     SECTION: OUR COMPANIES
+============================ -->
+<section id="companies" class="section" aria-labelledby="companies-title">
+  <div class="container">
+    <div class="fade-in">
+      <span class="section-label" data-i18n="comp_label">Our Companies</span>
+      <h2 class="section-title" id="companies-title" data-i18n="comp_title">The Portfolio</h2>
+      <div class="divider"></div>
+      <p class="section-sub" data-i18n="comp_sub">Each entity is built for scale, operating within the Vahos Group infrastructure.</p>
+    </div>
+
+    <div class="companies-grid fade-in">
+
+      <!-- eRadio Global -->
+      <div class="company-card">
+        <div class="company-tag" data-i18n="comp_tag_media">Media Division</div>
+        <div class="company-name">eRadio Global</div>
+        <p class="company-desc" data-i18n="comp1_desc">Canada's digital radio station for the Latino community. Broadcasting from Brooks, Alberta with a multicultural mandate and a growing national audience. Founded in Bogotá in 2011.</p>
+        <div>
+          <a href="https://eradioglobal.com" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="font-size:13px;" data-i18n="comp_visit">Visit Website</a>
+        </div>
+      </div>
+
+      <!-- Prime Services Canada -->
+      <div class="company-card">
+        <div class="company-tag" data-i18n="comp_tag_services">Services Division</div>
+        <div class="company-name">Prime Services Canada</div>
+        <p class="company-desc" data-i18n="comp2_desc">A technology platform connecting independent contractors with home cleaning clients across Alberta. Structured for national expansion to Edmonton and Vancouver.</p>
+        <div>
+          <a href="https://primeservicescanada.ca" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="font-size:13px;" data-i18n="comp_visit">Visit Website</a>
+        </div>
+      </div>
+
+      <!-- Vahos Immigration -->
+      <div class="company-card">
+        <div class="company-tag" data-i18n="comp_tag_vi">Venture Integration</div>
+        <div class="company-name">Vahos Immigration</div>
+        <p class="company-desc" data-i18n="comp3_desc">Immigration consulting services for newcomers to Canada. Providing structured, professional guidance through Canada's immigration pathways, with deep expertise in the Latino migrant community.</p>
+        <div>
+          <a href="mailto:contact@vahosgroup.com" class="btn btn-outline" style="font-size:13px;" data-i18n="comp_contact">Contact Us</a>
+        </div>
+      </div>
+
+      <!-- eRadio Coffee -->
+      <div class="company-card">
+        <div class="company-tag" data-i18n="comp_tag_cs">Coming Soon</div>
+        <div class="company-name">eRadio Coffee</div>
+        <p class="company-desc" data-i18n="comp4_desc">A franchise model integrating the eRadio Global media brand into a physical retail concept. Designed as a community-anchored franchise opportunity within the Vahos Group ecosystem.</p>
+        <div>
+          <span class="company-coming-soon" data-i18n="comp_soon">Franchise Model · In Development</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================
+     SECTION: GROWTH STRATEGY
+============================ -->
+<section id="strategy" class="section" aria-labelledby="strategy-title">
+  <div class="container">
+    <div class="fade-in">
+      <span class="section-label" data-i18n="strat_label">Growth Strategy</span>
+      <h2 class="section-title" id="strategy-title" data-i18n="strat_title">A Defined Expansion Path</h2>
+      <div class="divider"></div>
+      <p class="section-sub" data-i18n="strat_sub">We build from proven models before scaling — disciplined, sequential, sustainable.</p>
+    </div>
+
+    <div class="timeline fade-in">
+      <div class="timeline-item">
+        <div class="timeline-dot" aria-hidden="true"></div>
+        <div>
+          <div class="timeline-phase" data-i18n="phase1_label">Phase 1 · Active</div>
+          <div class="timeline-title" data-i18n="phase1_title">Brooks — Laboratory Model</div>
+          <p class="timeline-desc" data-i18n="phase1_desc">The origin market. Brooks, Alberta serves as the operational laboratory where each business model is validated before replication. A dense, multicultural community ideal for proving scalability.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot" aria-hidden="true"></div>
+        <div>
+          <div class="timeline-phase" data-i18n="phase2_label">Phase 2 · In Progress</div>
+          <div class="timeline-title" data-i18n="phase2_title">Alberta — Provincial Growth</div>
+          <p class="timeline-desc" data-i18n="phase2_desc">Expanding operational footprint across Calgary, Edmonton and secondary Alberta markets. Building brand recognition at the provincial level before national deployment.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot" aria-hidden="true"></div>
+        <div>
+          <div class="timeline-phase" data-i18n="phase3_label">Phase 3 · Planned</div>
+          <div class="timeline-title" data-i18n="phase3_title">Canada — National Expansion</div>
+          <p class="timeline-desc" data-i18n="phase3_desc">Deploying the validated platform model coast to coast. Target markets include Vancouver, Toronto, and Montreal — Canada's largest Latino-immigrant population centres.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot" aria-hidden="true"></div>
+        <div>
+          <div class="timeline-phase" data-i18n="phase4_label">Phase 4 · Long-Term Vision</div>
+          <div class="timeline-title" data-i18n="phase4_title">International — Global Reach</div>
+          <p class="timeline-desc" data-i18n="phase4_desc">Exporting the Canadian business platform model to Spanish-speaking markets in Latin America and Europe. A long-term vision anchored in the success of domestic operations.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================
+     SECTION: PARTNER WITH US
+============================ -->
+<section id="partner" class="section" aria-labelledby="partner-title">
+  <div class="container">
+    <div class="fade-in">
+      <span class="section-label" data-i18n="part_label">Partner With Us</span>
+      <h2 class="section-title" id="partner-title" data-i18n="part_title">Business Integration Model</h2>
+      <div class="divider"></div>
+      <p class="section-sub" data-i18n="part_sub">We work with Canadian businesses that want structured growth — not just visibility. Our integration model delivers brand, media, operations, and scale within a single framework.</p>
+    </div>
+
+    <div class="partner-grid fade-in">
+      <div>
+        <div class="partner-features">
+          <div class="partner-feature">
+            <div class="partner-feature-num">01</div>
+            <div>
+              <div class="partner-feature-title" data-i18n="pf1_title">Brand Infrastructure</div>
+              <div class="partner-feature-desc" data-i18n="pf1_desc">Access to established brand equity, visual identity systems, and institutional positioning within the Vahos Group network.</div>
+            </div>
+          </div>
+          <div class="partner-feature">
+            <div class="partner-feature-num">02</div>
+            <div>
+              <div class="partner-feature-title" data-i18n="pf2_title">Media Amplification</div>
+              <div class="partner-feature-desc" data-i18n="pf2_desc">eRadio Global's distribution network provides targeted reach into multicultural Canadian markets through digital broadcasting.</div>
+            </div>
+          </div>
+          <div class="partner-feature">
+            <div class="partner-feature-num">03</div>
+            <div>
+              <div class="partner-feature-title" data-i18n="pf3_title">Operational Support</div>
+              <div class="partner-feature-desc" data-i18n="pf3_desc">Leverage our operational frameworks, contractor systems, and platform infrastructure to reduce build time and cost.</div>
+            </div>
+          </div>
+          <div class="partner-feature">
+            <div class="partner-feature-num">04</div>
+            <div>
+              <div class="partner-feature-title" data-i18n="pf4_title">Scalable Growth Model</div>
+              <div class="partner-feature-desc" data-i18n="pf4_desc">Our phased expansion approach — proven in Alberta — can be applied to any business entering or growing within the Canadian market.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <p class="section-sub" style="margin-bottom:32px;" data-i18n="part_cta_text">If your business aligns with our ecosystem philosophy, we invite you to initiate a conversation. Partnership inquiries are reviewed on a selective basis.</p>
+        <a href="#contact" class="btn btn-primary" data-i18n="part_btn">Start a Partnership</a>
+
+        <div style="margin-top:48px;padding-top:32px;border-top:1px solid var(--border-light);">
+          <div class="section-label" style="margin-bottom:16px;" data-i18n="part_suited">Suited for</div>
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <div style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--text-secondary);">
+              <div style="width:1px;height:14px;background:var(--primary);flex-shrink:0;"></div>
+              <span data-i18n="suited1">Canadian businesses seeking multicultural market reach</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--text-secondary);">
+              <div style="width:1px;height:14px;background:var(--primary);flex-shrink:0;"></div>
+              <span data-i18n="suited2">Service businesses looking for platform infrastructure</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--text-secondary);">
+              <div style="width:1px;height:14px;background:var(--primary);flex-shrink:0;"></div>
+              <span data-i18n="suited3">Media and content creators aligned with our mandate</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px;font-size:14px;color:var(--text-secondary);">
+              <div style="width:1px;height:14px;background:var(--primary);flex-shrink:0;"></div>
+              <span data-i18n="suited4">Entrepreneurs seeking structured franchise or integration models</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================
+     SECTION: INVESTOR RELATIONS
+============================ -->
+<section id="investors" class="section" style="background:var(--surface-alt);border-top:1px solid var(--border-light);border-bottom:1px solid var(--border-light);" aria-labelledby="investors-title">
+  <div class="container">
+    <div class="fade-in">
+      <span class="section-label" data-i18n="inv_label">Investor Relations</span>
+      <h2 class="section-title" id="investors-title" data-i18n="inv_title">A Platform Built to Scale</h2>
+      <div class="divider"></div>
+      <p class="section-sub" data-i18n="inv_sub">Vahos Group is structured for institutional-quality growth. We welcome conversations with investors aligned with our long-term vision.</p>
+    </div>
+
+    <div class="investor-grid fade-in">
+      <div class="investor-block">
+        <div class="investor-block-label" data-i18n="inv_block1_label">Vision</div>
+        <div class="investor-block-title" data-i18n="inv_block1_title">Canada's Premier Multicultural Business Platform</div>
+        <p class="investor-block-desc" data-i18n="inv_block1_desc">Building integrated ecosystems that serve Canada's fastest-growing demographic — the multicultural immigrant population — across media, services, and venture integration.</p>
+      </div>
+      <div class="investor-block">
+        <div class="investor-block-label" data-i18n="inv_block2_label">Business Model</div>
+        <div class="investor-block-title" data-i18n="inv_block2_title">Diversified Revenue Across Three Divisions</div>
+        <p class="investor-block-desc" data-i18n="inv_block2_desc">Advertising and sponsorships via eRadio Global. Service platform fees via Prime Services Canada. Consulting and franchise licensing via Vahos Immigration and eRadio Coffee.</p>
+      </div>
+      <div class="investor-block">
+        <div class="investor-block-label" data-i18n="inv_block3_label">Expansion Focus</div>
+        <div class="investor-block-title" data-i18n="inv_block3_title">Proven Model, Provincial to National</div>
+        <p class="investor-block-desc" data-i18n="inv_block3_desc">Validated operational model in Alberta ready for replication across Canada. Each phase de-risks the next. Franchise model provides low-capital geographic expansion.</p>
+      </div>
+      <div class="investor-block">
+        <div class="investor-block-label" data-i18n="inv_block4_label">Contact</div>
+        <div class="investor-block-title" data-i18n="inv_block4_title">Request an Investor Deck</div>
+        <p class="investor-block-desc" data-i18n="inv_block4_desc">Qualified investors may request our investor deck and supplementary documentation via our contact form. All inquiries are reviewed within 5 business days.</p>
+      </div>
+    </div>
+
+    <!-- Investor Deck Request Form -->
+    <div class="investor-form fade-in" id="investor-form">
+      <div class="section-label" style="margin-bottom:24px;" data-i18n="inv_form_title">Request Investor Deck</div>
+      <div class="form-row">
+        <div class="form-group">
+          <label data-i18n="form_name">Full Name</label>
+          <input type="text" id="inv-name" placeholder="Jane Smith" />
+        </div>
+        <div class="form-group">
+          <label data-i18n="form_org">Organization</label>
+          <input type="text" id="inv-org" placeholder="Investment Fund" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label data-i18n="form_email">Email</label>
+        <input type="email" id="inv-email" placeholder="investor@fund.com" />
+      </div>
+      <div class="form-group">
+        <label data-i18n="form_inv_type">Investor Type</label>
+        <select id="inv-type">
+          <option value="" data-i18n="inv_type_select">Select...</option>
+          <option value="angel" data-i18n="inv_type1">Angel Investor</option>
+          <option value="vc" data-i18n="inv_type2">Venture Capital</option>
+          <option value="institutional" data-i18n="inv_type3">Institutional Investor</option>
+          <option value="family" data-i18n="inv_type4">Family Office</option>
+          <option value="other" data-i18n="inv_type5">Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label data-i18n="form_message">Message (optional)</label>
+        <textarea id="inv-msg" placeholder="Brief introduction or specific areas of interest..."></textarea>
+      </div>
+      <button class="btn btn-primary" onclick="submitInvestorForm()" data-i18n="inv_submit">Request Investor Deck</button>
+      <div class="form-success" id="inv-success" data-i18n="inv_success">Thank you. We will be in touch within 5 business days.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================
+     SECTION: ABOUT
+============================ -->
+<section id="about" class="section" aria-labelledby="about-title">
+  <div class="container">
+    <div class="fade-in">
+      <span class="section-label" data-i18n="about_label">About</span>
+      <h2 class="section-title" id="about-title" data-i18n="about_title">The Organization</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="about-grid fade-in">
+      <div class="about-body">
+        <p data-i18n="about_p1">Vahos Group is a Canadian holding company founded and headquartered in Alberta. The organization was built around a straightforward thesis: that multicultural communities in Canada represent a significant and underserved market, and that properly structured businesses serving these communities can achieve durable, scalable growth.</p>
+        <p data-i18n="about_p2">The Group operates three active divisions — Media, Services, and Venture Integration — each designed to function independently while creating mutual value within the broader platform. This integrated structure allows for shared infrastructure, cross-promotion, and coordinated expansion across markets.</p>
+        <p data-i18n="about_p3">Every entity within the Vahos Group is built with institutional discipline: documented systems, defined processes, and a clear path from local validation to national deployment. The platform is designed to grow without losing the operational coherence that defines its early-stage model.</p>
+      </div>
+
+      <div class="about-meta">
+        <div class="about-meta-row">
+          <div class="about-meta-key" data-i18n="meta_founded">Founded</div>
+          <div class="about-meta-val">2011</div>
+        </div>
+        <div class="about-meta-row">
+          <div class="about-meta-key" data-i18n="meta_hq">Headquarters</div>
+          <div class="about-meta-val">Alberta, Canada</div>
+        </div>
+        <div class="about-meta-row">
+          <div class="about-meta-key" data-i18n="meta_structure">Structure</div>
+          <div class="about-meta-val" data-i18n="meta_structure_val">Private Holding Company</div>
+        </div>
+        <div class="about-meta-row">
+          <div class="about-meta-key" data-i18n="meta_founder">Founder</div>
+          <div class="about-meta-val">Nelson Vahos</div>
+        </div>
+        <div class="about-meta-row">
+          <div class="about-meta-key" data-i18n="meta_market">Primary Market</div>
+          <div class="about-meta-val" data-i18n="meta_market_val">Canada — Multicultural Communities</div>
+        </div>
+        <div class="about-meta-row">
+          <div class="about-meta-key" data-i18n="meta_philosophy">Philosophy</div>
+          <div class="about-meta-val" data-i18n="meta_philosophy_val">El poder de la comunicación</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================
+     SECTION: CONTACT
+============================ -->
+<section id="contact" class="section" style="background:var(--surface-alt);border-top:1px solid var(--border-light);" aria-labelledby="contact-title">
+  <div class="container">
+    <div class="fade-in">
+      <span class="section-label" data-i18n="contact_label">Contact</span>
+      <h2 class="section-title" id="contact-title" data-i18n="contact_title">Get in Touch</h2>
+      <div class="divider"></div>
+    </div>
+
+    <div class="contact-grid fade-in">
+      <div class="contact-info">
+        <div>
+          <div class="contact-item-label" data-i18n="contact_email_label">Email</div>
+          <div class="contact-item-val">
+            <a href="mailto:contact@vahosgroup.com" style="color:var(--primary);">contact@vahosgroup.com</a>
+          </div>
+        </div>
+        <div>
+          <div class="contact-item-label" data-i18n="contact_loc_label">Location</div>
+          <div class="contact-item-val">Alberta, Canada</div>
+        </div>
+        <div>
+          <div class="contact-item-label" data-i18n="contact_hours_label">Response Time</div>
+          <div class="contact-item-val" data-i18n="contact_hours_val">Within 3 business days</div>
+        </div>
+        <div style="padding-top:24px;border-top:1px solid var(--border-light);">
+          <p style="font-size:14px;color:var(--text-secondary);line-height:1.7;" data-i18n="contact_note">For media inquiries, partnership proposals, investor relations, or general information about the Vahos Group, please use the form or contact us directly by email.</p>
+        </div>
+      </div>
+
+      <div class="contact-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label data-i18n="form_name">Full Name</label>
+            <input type="text" id="c-name" />
+          </div>
+          <div class="form-group">
+            <label data-i18n="form_email">Email</label>
+            <input type="email" id="c-email" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label data-i18n="form_subject">Subject</label>
+          <input type="text" id="c-subject" />
+        </div>
+        <div class="form-group">
+          <label data-i18n="form_message">Message</label>
+          <textarea id="c-msg"></textarea>
+        </div>
+        <button class="btn btn-primary" onclick="submitContact()" data-i18n="contact_submit">Send Message</button>
+        <div class="form-success" id="c-success" data-i18n="contact_success">Your message has been received. We'll respond within 3 business days.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================
+     SECTION: FOOTER
+============================ -->
+<footer id="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-top">
+
+      <!-- Brand -->
+      <div>
+        <div class="footer-brand-name">Vahos Group</div>
+        <div class="footer-brand-sub">Canadian Business Platform</div>
+        <p class="footer-brand-desc" data-i18n="footer_desc">Building structured business ecosystems across Canada. Alberta-founded, nationally-focused.</p>
+      </div>
+
+      <!-- Companies -->
+      <div>
+        <div class="footer-col-title" data-i18n="footer_companies">Companies</div>
+        <ul class="footer-col-links">
+          <li><a href="https://eradioglobal.com" target="_blank" rel="noopener noreferrer">eRadio Global</a></li>
+          <li><a href="https://primeservicescanada.ca" target="_blank" rel="noopener noreferrer">Prime Services Canada</a></li>
+          <li><a href="#contact">Vahos Immigration</a></li>
+          <li><a href="#companies">eRadio Coffee</a></li>
+        </ul>
+      </div>
+
+      <!-- Corporate -->
+      <div>
+        <div class="footer-col-title" data-i18n="footer_corporate">Corporate</div>
+        <ul class="footer-col-links">
+          <li><a href="#about" data-i18n="nav_about">About</a></li>
+          <li><a href="#strategy" data-i18n="nav_strategy">Strategy</a></li>
+          <li><a href="#investors" data-i18n="nav_investors">Investors</a></li>
+          <li><a href="#partner" data-i18n="nav_partner">Partner</a></li>
+          <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Legal -->
+      <div>
+        <div class="footer-col-title" data-i18n="footer_legal">Legal</div>
+        <ul class="footer-col-links">
+          <li><a href="#" data-i18n="footer_privacy">Privacy Policy</a></li>
+          <li><a href="#" data-i18n="footer_terms">Terms of Use</a></li>
+          <li><a href="#" data-i18n="footer_cookie">Cookie Policy</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <span data-i18n="footer_copy">© 2026 Vahos Group. All rights reserved.</span>
+      <span data-i18n="footer_tagline">A Canadian Business Platform.</span>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ============================
+     JAVASCRIPT
+============================ -->
+<script>
+  /* =====================
+     TRANSLATIONS
+  ===================== */
+  const translations = {
+    en: {
+      nav_sub: 'Canadian Business Platform',
+      nav_ecosystem: 'Ecosystem',
+      nav_companies: 'Companies',
+      nav_strategy: 'Strategy',
+      nav_partner: 'Partner',
+      nav_investors: 'Investors',
+      nav_about: 'About',
+      nav_contact: 'Contact',
+      nav_partner_btn: 'Partner With Us',
+
+      hero_eyebrow: 'Alberta, Canada · Est. 2011',
+      hero_desc: 'Building structured business ecosystems across Canada.',
+      hero_btn1: 'Explore the Ecosystem',
+      hero_btn2: 'Investor Relations',
+
+      stat1: 'Active Companies',
+      stat2: 'Founded',
+      stat3: 'National Scope',
+      stat4: 'Growth Phases',
+
+      build_label: 'What We Build',
+      build_title: 'Three Integrated Divisions',
+      build_sub: 'Each division operates independently while contributing to the broader Vahos Group platform.',
+      pillar1_title: 'Media',
+      pillar1_desc: 'Digital broadcasting, communication networks and content infrastructure for multicultural communities across Canada.',
+      pillar2_title: 'Services',
+      pillar2_desc: 'Operational platforms designed for scalable service delivery, connecting clients with vetted independent contractors.',
+      pillar3_title: 'Venture Integration',
+      pillar3_desc: 'Structured integration model for Canadian businesses aligned with our ecosystem — brand, media, and operations in one framework.',
+
+      eco_label: 'Ecosystem Structure',
+      eco_title: 'How the Platform Connects',
+      eco_sub: 'An integrated holding structure where each unit amplifies the others.',
+      eco_node1: 'Media Division',
+      eco_node2: 'Services Division',
+      eco_node3: 'Venture Integration',
+      eco_active: 'Active',
+      eco_growth: 'Scaling',
+
+      comp_label: 'Our Companies',
+      comp_title: 'The Portfolio',
+      comp_sub: 'Each entity is built for scale, operating within the Vahos Group infrastructure.',
+      comp_tag_media: 'Media Division',
+      comp_tag_services: 'Services Division',
+      comp_tag_vi: 'Venture Integration',
+      comp_tag_cs: 'Coming Soon',
+      comp1_desc: 'Canada\'s digital radio station for the Latino community. Broadcasting from Brooks, Alberta with a multicultural mandate and a growing national audience. Founded in Bogotá in 2011.',
+      comp2_desc: 'A technology platform connecting independent contractors with home cleaning clients across Alberta. Structured for national expansion to Edmonton and Vancouver.',
+      comp3_desc: 'Immigration consulting services for newcomers to Canada. Providing structured, professional guidance through Canada\'s immigration pathways, with deep expertise in the Latino migrant community.',
+      comp4_desc: 'A franchise model integrating the eRadio Global media brand into a physical retail concept. Designed as a community-anchored franchise opportunity within the Vahos Group ecosystem.',
+      comp_visit: 'Visit Website',
+      comp_contact: 'Contact Us',
+      comp_soon: 'Franchise Model · In Development',
+
+      strat_label: 'Growth Strategy',
+      strat_title: 'A Defined Expansion Path',
+      strat_sub: 'We build from proven models before scaling — disciplined, sequential, sustainable.',
+      phase1_label: 'Phase 1 · Active',
+      phase1_title: 'Brooks — Laboratory Model',
+      phase1_desc: 'The origin market. Brooks, Alberta serves as the operational laboratory where each business model is validated before replication. A dense, multicultural community ideal for proving scalability.',
+      phase2_label: 'Phase 2 · In Progress',
+      phase2_title: 'Alberta — Provincial Growth',
+      phase2_desc: 'Expanding operational footprint across Calgary, Edmonton and secondary Alberta markets. Building brand recognition at the provincial level before national deployment.',
+      phase3_label: 'Phase 3 · Planned',
+      phase3_title: 'Canada — National Expansion',
+      phase3_desc: 'Deploying the validated platform model coast to coast. Target markets include Vancouver, Toronto, and Montreal — Canada\'s largest Latino-immigrant population centres.',
+      phase4_label: 'Phase 4 · Long-Term Vision',
+      phase4_title: 'International — Global Reach',
+      phase4_desc: 'Exporting the Canadian business platform model to Spanish-speaking markets in Latin America and Europe. A long-term vision anchored in the success of domestic operations.',
+
+      part_label: 'Partner With Us',
+      part_title: 'Business Integration Model',
+      part_sub: 'We work with Canadian businesses that want structured growth — not just visibility. Our integration model delivers brand, media, operations, and scale within a single framework.',
+      pf1_title: 'Brand Infrastructure',
+      pf1_desc: 'Access to established brand equity, visual identity systems, and institutional positioning within the Vahos Group network.',
+      pf2_title: 'Media Amplification',
+      pf2_desc: 'eRadio Global\'s distribution network provides targeted reach into multicultural Canadian markets through digital broadcasting.',
+      pf3_title: 'Operational Support',
+      pf3_desc: 'Leverage our operational frameworks, contractor systems, and platform infrastructure to reduce build time and cost.',
+      pf4_title: 'Scalable Growth Model',
+      pf4_desc: 'Our phased expansion approach — proven in Alberta — can be applied to any business entering or growing within the Canadian market.',
+      part_cta_text: 'If your business aligns with our ecosystem philosophy, we invite you to initiate a conversation. Partnership inquiries are reviewed on a selective basis.',
+      part_btn: 'Start a Partnership',
+      part_suited: 'Suited for',
+      suited1: 'Canadian businesses seeking multicultural market reach',
+      suited2: 'Service businesses looking for platform infrastructure',
+      suited3: 'Media and content creators aligned with our mandate',
+      suited4: 'Entrepreneurs seeking structured franchise or integration models',
+
+      inv_label: 'Investor Relations',
+      inv_title: 'A Platform Built to Scale',
+      inv_sub: 'Vahos Group is structured for institutional-quality growth. We welcome conversations with investors aligned with our long-term vision.',
+      inv_block1_label: 'Vision',
+      inv_block1_title: 'Canada\'s Premier Multicultural Business Platform',
+      inv_block1_desc: 'Building integrated ecosystems that serve Canada\'s fastest-growing demographic — the multicultural immigrant population — across media, services, and venture integration.',
+      inv_block2_label: 'Business Model',
+      inv_block2_title: 'Diversified Revenue Across Three Divisions',
+      inv_block2_desc: 'Advertising and sponsorships via eRadio Global. Service platform fees via Prime Services Canada. Consulting and franchise licensing via Vahos Immigration and eRadio Coffee.',
+      inv_block3_label: 'Expansion Focus',
+      inv_block3_title: 'Proven Model, Provincial to National',
+      inv_block3_desc: 'Validated operational model in Alberta ready for replication across Canada. Each phase de-risks the next. Franchise model provides low-capital geographic expansion.',
+      inv_block4_label: 'Contact',
+      inv_block4_title: 'Request an Investor Deck',
+      inv_block4_desc: 'Qualified investors may request our investor deck and supplementary documentation via our contact form. All inquiries are reviewed within 5 business days.',
+      inv_form_title: 'Request Investor Deck',
+      form_name: 'Full Name',
+      form_org: 'Organization',
+      form_email: 'Email',
+      form_inv_type: 'Investor Type',
+      inv_type_select: 'Select...',
+      inv_type1: 'Angel Investor',
+      inv_type2: 'Venture Capital',
+      inv_type3: 'Institutional Investor',
+      inv_type4: 'Family Office',
+      inv_type5: 'Other',
+      form_message: 'Message (optional)',
+      inv_submit: 'Request Investor Deck',
+      inv_success: 'Thank you. We will be in touch within 5 business days.',
+
+      about_label: 'About',
+      about_title: 'The Organization',
+      about_p1: 'Vahos Group is a Canadian holding company founded and headquartered in Alberta. The organization was built around a straightforward thesis: that multicultural communities in Canada represent a significant and underserved market, and that properly structured businesses serving these communities can achieve durable, scalable growth.',
+      about_p2: 'The Group operates three active divisions — Media, Services, and Venture Integration — each designed to function independently while creating mutual value within the broader platform. This integrated structure allows for shared infrastructure, cross-promotion, and coordinated expansion across markets.',
+      about_p3: 'Every entity within the Vahos Group is built with institutional discipline: documented systems, defined processes, and a clear path from local validation to national deployment. The platform is designed to grow without losing the operational coherence that defines its early-stage model.',
+      meta_founded: 'Founded',
+      meta_hq: 'Headquarters',
+      meta_structure: 'Structure',
+      meta_structure_val: 'Private Holding Company',
+      meta_founder: 'Founder',
+      meta_market: 'Primary Market',
+      meta_market_val: 'Canada — Multicultural Communities',
+      meta_philosophy: 'Philosophy',
+      meta_philosophy_val: 'El poder de la comunicación',
+
+      contact_label: 'Contact',
+      contact_title: 'Get in Touch',
+      contact_email_label: 'Email',
+      contact_loc_label: 'Location',
+      contact_hours_label: 'Response Time',
+      contact_hours_val: 'Within 3 business days',
+      contact_note: 'For media inquiries, partnership proposals, investor relations, or general information about the Vahos Group, please use the form or contact us directly by email.',
+      form_subject: 'Subject',
+      contact_submit: 'Send Message',
+      contact_success: 'Your message has been received. We\'ll respond within 3 business days.',
+
+      footer_desc: 'Building structured business ecosystems across Canada. Alberta-founded, nationally-focused.',
+      footer_companies: 'Companies',
+      footer_corporate: 'Corporate',
+      footer_legal: 'Legal',
+      footer_privacy: 'Privacy Policy',
+      footer_terms: 'Terms of Use',
+      footer_cookie: 'Cookie Policy',
+      footer_copy: '© 2026 Vahos Group. All rights reserved.',
+      footer_tagline: 'A Canadian Business Platform.',
+    },
+
+    es: {
+      nav_sub: 'Plataforma Empresarial Canadiense',
+      nav_ecosystem: 'Ecosistema',
+      nav_companies: 'Empresas',
+      nav_strategy: 'Estrategia',
+      nav_partner: 'Alianzas',
+      nav_investors: 'Inversores',
+      nav_about: 'Nosotros',
+      nav_contact: 'Contacto',
+      nav_partner_btn: 'Ser Aliado',
+
+      hero_eyebrow: 'Alberta, Canadá · Est. 2011',
+      hero_desc: 'Construyendo ecosistemas empresariales estructurados en Canadá.',
+      hero_btn1: 'Explorar el Ecosistema',
+      hero_btn2: 'Relaciones con Inversores',
+
+      stat1: 'Empresas Activas',
+      stat2: 'Fundación',
+      stat3: 'Alcance Nacional',
+      stat4: 'Fases de Crecimiento',
+
+      build_label: 'Lo Que Construimos',
+      build_title: 'Tres Divisiones Integradas',
+      build_sub: 'Cada división opera de forma independiente mientras contribuye a la plataforma general de Vahos Group.',
+      pillar1_title: 'Media',
+      pillar1_desc: 'Radiodifusión digital, redes de comunicación e infraestructura de contenidos para comunidades multiculturales en Canadá.',
+      pillar2_title: 'Servicios',
+      pillar2_desc: 'Plataformas operativas diseñadas para la prestación escalable de servicios, conectando clientes con contratistas independientes.',
+      pillar3_title: 'Integración de Ventures',
+      pillar3_desc: 'Modelo de integración estructurado para empresas canadienses alineadas con nuestro ecosistema — marca, medios y operaciones en un solo marco.',
+
+      eco_label: 'Estructura del Ecosistema',
+      eco_title: 'Cómo se Conecta la Plataforma',
+      eco_sub: 'Una estructura holding integrada donde cada unidad amplifica a las demás.',
+      eco_node1: 'División de Media',
+      eco_node2: 'División de Servicios',
+      eco_node3: 'Integración de Ventures',
+      eco_active: 'Activo',
+      eco_growth: 'Escalando',
+
+      comp_label: 'Nuestras Empresas',
+      comp_title: 'El Portafolio',
+      comp_sub: 'Cada entidad está construida para escalar, operando dentro de la infraestructura de Vahos Group.',
+      comp_tag_media: 'División de Media',
+      comp_tag_services: 'División de Servicios',
+      comp_tag_vi: 'Integración de Ventures',
+      comp_tag_cs: 'Próximamente',
+      comp1_desc: 'La estación de radio digital de Canadá para la comunidad latina. Transmitiendo desde Brooks, Alberta, con una misión multicultural y una audiencia nacional en crecimiento. Fundada en Bogotá en 2011.',
+      comp2_desc: 'Una plataforma tecnológica que conecta contratistas independientes con clientes de limpieza del hogar en Alberta. Estructurada para expansión nacional hacia Edmonton y Vancouver.',
+      comp3_desc: 'Servicios de consultoría de inmigración para recién llegados a Canadá. Orientación profesional y estructurada a través de los caminos de inmigración canadienses, con profunda experiencia en la comunidad migrante latina.',
+      comp4_desc: 'Un modelo de franquicia que integra la marca de medios eRadio Global en un concepto de retail físico. Diseñado como una oportunidad de franquicia anclada en la comunidad dentro del ecosistema de Vahos Group.',
+      comp_visit: 'Visitar Sitio',
+      comp_contact: 'Contáctenos',
+      comp_soon: 'Modelo de Franquicia · En Desarrollo',
+
+      strat_label: 'Estrategia de Crecimiento',
+      strat_title: 'Una Ruta de Expansión Definida',
+      strat_sub: 'Construimos a partir de modelos probados antes de escalar — disciplinado, secuencial, sostenible.',
+      phase1_label: 'Fase 1 · Activa',
+      phase1_title: 'Brooks — Modelo Laboratorio',
+      phase1_desc: 'El mercado de origen. Brooks, Alberta, sirve como laboratorio operacional donde cada modelo de negocio se valida antes de replicarse. Una comunidad densa y multicultural, ideal para probar la escalabilidad.',
+      phase2_label: 'Fase 2 · En Progreso',
+      phase2_title: 'Alberta — Crecimiento Provincial',
+      phase2_desc: 'Expansión de presencia operativa en Calgary, Edmonton y mercados secundarios de Alberta. Construyendo reconocimiento de marca a nivel provincial antes del despliegue nacional.',
+      phase3_label: 'Fase 3 · Planificada',
+      phase3_title: 'Canadá — Expansión Nacional',
+      phase3_desc: 'Despliegue del modelo de plataforma validado de costa a costa. Los mercados objetivo incluyen Vancouver, Toronto y Montreal — los centros de mayor población latinoamericante inmigrante en Canadá.',
+      phase4_label: 'Fase 4 · Visión a Largo Plazo',
+      phase4_title: 'Internacional — Alcance Global',
+      phase4_desc: 'Exportar el modelo de plataforma empresarial canadiense a mercados hispanohablantes en América Latina y Europa. Una visión a largo plazo anclada en el éxito de las operaciones nacionales.',
+
+      part_label: 'Alianzas',
+      part_title: 'Modelo de Integración Empresarial',
+      part_sub: 'Trabajamos con empresas canadienses que quieren crecimiento estructurado — no solo visibilidad. Nuestro modelo de integración entrega marca, medios, operaciones y escala en un solo marco.',
+      pf1_title: 'Infraestructura de Marca',
+      pf1_desc: 'Acceso a valor de marca establecido, sistemas de identidad visual y posicionamiento institucional dentro de la red de Vahos Group.',
+      pf2_title: 'Amplificación en Medios',
+      pf2_desc: 'La red de distribución de eRadio Global proporciona alcance focalizado en mercados multiculturales canadienses a través de la radiodifusión digital.',
+      pf3_title: 'Soporte Operativo',
+      pf3_desc: 'Aproveche nuestros marcos operativos, sistemas de contratistas e infraestructura de plataforma para reducir tiempos y costos de desarrollo.',
+      pf4_title: 'Modelo de Crecimiento Escalable',
+      pf4_desc: 'Nuestro enfoque de expansión por fases — probado en Alberta — puede aplicarse a cualquier empresa que ingrese o crezca dentro del mercado canadiense.',
+      part_cta_text: 'Si su empresa se alinea con nuestra filosofía de ecosistema, lo invitamos a iniciar una conversación. Las consultas de alianza se revisan de manera selectiva.',
+      part_btn: 'Iniciar una Alianza',
+      part_suited: 'Adecuado para',
+      suited1: 'Empresas canadienses que buscan alcance en mercados multiculturales',
+      suited2: 'Empresas de servicios que necesitan infraestructura de plataforma',
+      suited3: 'Medios y creadores de contenido alineados con nuestra misión',
+      suited4: 'Emprendedores que buscan modelos de franquicia o integración estructurada',
+
+      inv_label: 'Relaciones con Inversores',
+      inv_title: 'Una Plataforma Construida para Escalar',
+      inv_sub: 'Vahos Group está estructurado para un crecimiento de calidad institucional. Damos la bienvenida a conversaciones con inversores alineados con nuestra visión a largo plazo.',
+      inv_block1_label: 'Visión',
+      inv_block1_title: 'La Principal Plataforma Empresarial Multicultural de Canadá',
+      inv_block1_desc: 'Construyendo ecosistemas integrados que sirven al segmento demográfico de más rápido crecimiento de Canadá — la población inmigrante multicultural — en medios, servicios e integración de ventures.',
+      inv_block2_label: 'Modelo de Negocio',
+      inv_block2_title: 'Ingresos Diversificados en Tres Divisiones',
+      inv_block2_desc: 'Publicidad y patrocinios a través de eRadio Global. Comisiones de plataforma de servicios a través de Prime Services Canada. Consultoría y licencias de franquicia a través de Vahos Immigration y eRadio Coffee.',
+      inv_block3_label: 'Foco de Expansión',
+      inv_block3_title: 'Modelo Probado, de Provincial a Nacional',
+      inv_block3_desc: 'Modelo operativo validado en Alberta listo para replicarse en todo Canadá. Cada fase reduce el riesgo de la siguiente. El modelo de franquicia proporciona expansión geográfica con bajo capital.',
+      inv_block4_label: 'Contacto',
+      inv_block4_title: 'Solicitar Deck de Inversión',
+      inv_block4_desc: 'Los inversores calificados pueden solicitar nuestro deck de inversión y documentación complementaria a través de nuestro formulario de contacto. Todas las consultas se revisan en 5 días hábiles.',
+      inv_form_title: 'Solicitar Deck de Inversión',
+      form_name: 'Nombre Completo',
+      form_org: 'Organización',
+      form_email: 'Correo Electrónico',
+      form_inv_type: 'Tipo de Inversor',
+      inv_type_select: 'Seleccionar...',
+      inv_type1: 'Inversor Ángel',
+      inv_type2: 'Capital de Riesgo',
+      inv_type3: 'Inversor Institucional',
+      inv_type4: 'Family Office',
+      inv_type5: 'Otro',
+      form_message: 'Mensaje (opcional)',
+      inv_submit: 'Solicitar Deck de Inversión',
+      inv_success: 'Gracias. Nos pondremos en contacto en 5 días hábiles.',
+
+      about_label: 'Nosotros',
+      about_title: 'La Organización',
+      about_p1: 'Vahos Group es una compañía holding canadiense fundada y con sede en Alberta. La organización fue construida en torno a una tesis directa: que las comunidades multiculturales en Canadá representan un mercado significativo y poco atendido, y que las empresas correctamente estructuradas que sirven a estas comunidades pueden lograr un crecimiento duradero y escalable.',
+      about_p2: 'El Grupo opera tres divisiones activas — Media, Servicios e Integración de Ventures — cada una diseñada para funcionar de forma independiente mientras crea valor mutuo dentro de la plataforma más amplia. Esta estructura integrada permite infraestructura compartida, promoción cruzada y expansión coordinada en los mercados.',
+      about_p3: 'Cada entidad dentro de Vahos Group se construye con disciplina institucional: sistemas documentados, procesos definidos y un camino claro desde la validación local hasta el despliegue nacional. La plataforma está diseñada para crecer sin perder la coherencia operativa que define su modelo en etapas tempranas.',
+      meta_founded: 'Fundación',
+      meta_hq: 'Sede',
+      meta_structure: 'Estructura',
+      meta_structure_val: 'Holding Privado',
+      meta_founder: 'Fundador',
+      meta_market: 'Mercado Principal',
+      meta_market_val: 'Canadá — Comunidades Multiculturales',
+      meta_philosophy: 'Filosofía',
+      meta_philosophy_val: 'El poder de la comunicación',
+
+      contact_label: 'Contacto',
+      contact_title: 'Contáctenos',
+      contact_email_label: 'Correo Electrónico',
+      contact_loc_label: 'Ubicación',
+      contact_hours_label: 'Tiempo de Respuesta',
+      contact_hours_val: 'En 3 días hábiles',
+      contact_note: 'Para consultas de medios, propuestas de alianza, relaciones con inversores o información general sobre Vahos Group, use el formulario o contáctenos directamente por correo.',
+      form_subject: 'Asunto',
+      contact_submit: 'Enviar Mensaje',
+      contact_success: 'Su mensaje ha sido recibido. Responderemos en 3 días hábiles.',
+
+      footer_desc: 'Construyendo ecosistemas empresariales estructurados en Canadá. Fundado en Alberta, con enfoque nacional.',
+      footer_companies: 'Empresas',
+      footer_corporate: 'Corporativo',
+      footer_legal: 'Legal',
+      footer_privacy: 'Política de Privacidad',
+      footer_terms: 'Términos de Uso',
+      footer_cookie: 'Política de Cookies',
+      footer_copy: '© 2026 Vahos Group. Todos los derechos reservados.',
+      footer_tagline: 'Una Plataforma Empresarial Canadiense.',
+    }
+  };
+
+  /* =====================
+     LANGUAGE LOGIC
+  ===================== */
+  let currentLang = 'en';
+
+  function setLang(lang) {
+    currentLang = lang;
+    const t = translations[lang];
+
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (t[key] !== undefined) {
+        el.textContent = t[key];
+      }
+    });
+
+    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+    document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+    document.documentElement.lang = lang;
+  }
+
+  /* =====================
+     MOBILE MENU
+  ===================== */
+  let mobileOpen = false;
+
+  function toggleMobile() {
+    mobileOpen = !mobileOpen;
+    const menu = document.getElementById('mobile-menu');
+    const btn = document.getElementById('hamburger');
+    menu.classList.toggle('open', mobileOpen);
+    btn.setAttribute('aria-expanded', mobileOpen);
+    menu.setAttribute('aria-hidden', !mobileOpen);
+  }
+
+  function closeMobile() {
+    mobileOpen = false;
+    document.getElementById('mobile-menu').classList.remove('open');
+    document.getElementById('hamburger').setAttribute('aria-expanded', false);
+    document.getElementById('mobile-menu').setAttribute('aria-hidden', true);
+  }
+
+  /* =====================
+     SCROLL ANIMATIONS
+  ===================== */
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  /* =====================
+     FORM HANDLERS
+  ===================== */
+  function submitInvestorForm() {
+    const name = document.getElementById('inv-name').value.trim();
+    const email = document.getElementById('inv-email').value.trim();
+    if (!name || !email) { return; }
+    document.getElementById('inv-success').style.display = 'block';
+    document.getElementById('inv-name').value = '';
+    document.getElementById('inv-email').value = '';
+    document.getElementById('inv-org').value = '';
+    document.getElementById('inv-msg').value = '';
+  }
+
+  function submitContact() {
+    const name = document.getElementById('c-name').value.trim();
+    const email = document.getElementById('c-email').value.trim();
+    if (!name || !email) { return; }
+    document.getElementById('c-success').style.display = 'block';
+    document.getElementById('c-name').value = '';
+    document.getElementById('c-email').value = '';
+    document.getElementById('c-subject').value = '';
+    document.getElementById('c-msg').value = '';
+  }
+
+  /* =====================
+     NAVBAR SCROLL EFFECT
+  ===================== */
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('navbar');
+    if (window.scrollY > 20) {
+      nav.style.background = 'rgba(11,15,26,0.98)';
+    } else {
+      nav.style.background = 'rgba(11,15,26,0.92)';
+    }
+  }, { passive: true });
+</script>
+
+</body>
+</html>
